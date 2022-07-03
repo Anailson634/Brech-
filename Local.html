@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Storage</title>
+</head>
+<body>
+    Nome <input type="text" id="Nome"></br>
+    Idade <input type="number" id="Idade">
+    <div>
+        Masculino <input type="radio" name="Sexo" id="SexoM">
+        Feiminino <input type="radio" name="Sexo" id="SexoF">
+    </div>
+    <input type="button" value="Enviar" onclick="Pegar()">
+
+    <script>
+        function Pegar() {
+            let Nome=document.getElementById("Nome").value;
+            let Idade=document.getElementById("Idade").value;
+            let Sexo=document.getElementById("SexoM").checked;
+
+            function SexoVeriy() {
+                if (Sexo) {
+                    return "Masculino"
+                } else {
+                    return "Feiminino"
+                }
+            } 
+            
+            localStorage["Client"] = JSON.stringify({
+                "Nome": Nome, 
+                "Idade": Idade, 
+                "Sexo": SexoVeriy()
+            });
+
+        }
+        function Ler() {
+            let rs=localStorage.Client
+            let js=JSON.parse(rs)
+            console.log(js)
+        }
+    </script>
+</body>
+</html>
